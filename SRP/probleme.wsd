@@ -1,0 +1,26 @@
+@startuml
+
+
+    class Car {
+        - String _id
+        - String _model
+        - String _brand
+        + Car(String id, String model, String brand)
+        + getId(): String
+        + getModel(): String
+        + getBrand(): String
+    }
+
+    class CarManager {
+        - List<Car> _carsDb
+        + CarManager()
+        + getFromDb(String carId): Car
+        + getCarsNames(): String
+        + getBestCar(): Car
+    }
+
+    CarManager "1" *-- "plusieurs" Car : a
+
+
+
+@enduml

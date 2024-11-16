@@ -1,0 +1,46 @@
+@startuml
+
+
+    class Car {
+        - String _id
+        - String _model
+        - String _brand
+        + Car(String id, String model, String brand)
+        + getId(): String
+        + getModel(): String
+        + getBrand(): String
+    }
+
+    class CarRepository {
+        - List<Car> _carsDb
+        + CarRepository()
+        + getCarById(String carId): Car
+        + getAllCars(): List<Car>
+    }
+
+    class CarFormatter {
+        + getCarsNames(List<Car> cars): String
+    }
+
+    class CarSelection {
+        + getBestCar(List<Car> cars): Car
+    }
+
+    class CarManager {
+        - CarRepository _carRepository
+        - CarFormatter _carFormatter
+        - CarSelection _carSelection
+        + CarManager()
+        + getCarById(String carId): Car
+        + getAllCarNames(): String
+        + getBestCar(): Car
+    }
+
+    CarRepository <-- "many" Car 
+    CarManager <-- CarRepository 
+    CarManager <-- CarFormatter 
+    CarManager <-- CarSelection 
+
+
+
+@enduml

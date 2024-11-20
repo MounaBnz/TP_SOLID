@@ -1,0 +1,28 @@
+@startuml
+skinparam style strictuml
+
+interface Resource {
+    +isFree() : int
+    +markBusy(resourceId : int)
+    +markFree(resourceId : int)
+}
+
+class TimeSlotResource {
+    +isFree() : int
+    +isBusy(resourceId : int)
+}
+
+class SpaceSlotResource {
+    +isFree() : int
+    +isBusy(resourceId : int)
+}
+
+class ResourceAllocator {
+    +allocate(resource : Resource) : int
+    +free(resource : Resource, resourceId : int)
+}
+
+Resource <|.. TimeSlotResource
+Resource <|.. SpaceSlotResource
+ResourceAllocator -- Resource
+@enduml

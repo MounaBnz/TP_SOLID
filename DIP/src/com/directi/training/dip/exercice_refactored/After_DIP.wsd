@@ -1,0 +1,28 @@
+@startuml
+
+interface IDatabase
+class MyDatabase
+class EncodingModule
+class EncodingModuleClient
+
+interface IDatabase{
++ write(inputString : String) : int
+}
+
+class MyDatabase{
+- {static} _data : Map<Integer, String>
+- {static} _count = 0
++ write(inputString : String) : int
+}
+
+class EncodingModule{
++ encodeWithFiles() : void
++ encodeBasedOnNetworkAndDatabase() : void
+}
+
+class EncodingModuleClient{}
+
+EncodingModuleClient ..> EncodingModule
+EncodingModule ..> IDatabase
+MyDatabase ..|> IDatabase
+@enduml

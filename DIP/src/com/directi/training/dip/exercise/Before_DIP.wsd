@@ -1,0 +1,26 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class MyDatabase
+class EncodingModule
+class EncodingModuleClient
+
+class MyDatabase{
+- {static} _data : Map<Integer, String>
+- {static} _count = 0
++ write(inputString : String) : int
+}
+
+class EncodingModule{
++ encodeWithFiles() : void
++encodeBasedOnNetworkAndDatabase() : void
+}
+
+class EncodingModuleClient{
+
+}
+
+EncodingModule ..> MyDatabase
+EncodingModuleClient ..> EncodingModule
+
+@enduml
